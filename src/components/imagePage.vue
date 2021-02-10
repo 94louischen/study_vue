@@ -12,23 +12,31 @@
 </template>
 
 <script>
-import axios from "axios";
+// import axios from "axios";
+import { dogs } from "../api/api.js";
+
 export default {
   data() {
     return {
       fits: ["狗狗"],
-      url:
-        "",
+      url: "",
     };
   },
   mounted() {
-    axios
-      .get("https://dog.ceo/api/breeds/image/random")
-      .then(response => {
-        this.url = response.data.message
+    // axios
+    //   .get("https://dog.ceo/api/breeds/image/random")
+    //   .then(response => {
+    //     this.url = response.data.message
+    //   })
+    //   .catch(function (err) {
+    //     console.log(err.data)
+    //   });
+    dogs()
+      .then((response) => {
+        this.url = response.data.message;
       })
       .catch(function (err) {
-        console.log(err.data)
+        console.log(err.data);
       });
   },
 };
